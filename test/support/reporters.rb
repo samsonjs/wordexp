@@ -1,6 +1,6 @@
-require "minitest/reporters"
+require 'minitest/reporters'
 
-if ENV["CI"]
+if ENV['CI']
   Minitest::Reporters.use!(Minitest::Reporters::SpecReporter.new)
 else
   Minitest::Reporters.use!(Minitest::Reporters::DefaultReporter.new)
