@@ -1,7 +1,7 @@
 module Wordexp
   class CLI
-    def call(argv)
-      puts argv.join(' ')
+    def call(string)
+      puts Wordexp.expand(string).inspect
     end
   end
 end

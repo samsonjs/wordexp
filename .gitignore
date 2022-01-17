@@ -8,3 +8,6 @@
 /spec/reports/
 /tmp/
 /Gemfile.lock
+ext/Makefile
+ext/*.o
+ext/*.bundle

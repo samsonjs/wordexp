@@ -2,7 +2,15 @@ require 'bundler/gem_tasks'
 require 'rake/testtask'
 require 'rubocop/rake_task'
 
-Rake::TestTask.new(:test) do |t|
+task :compile do
+  puts 'Compiling C extension'
+  `cd ext && make clean`
+  `cd ext && ruby extconf.rb`
+  `cd ext && make`
+  puts 'Done'
+end
+
+Rake::TestTask.new(test: :compile) do |t|
   t.libs << 'test'
   t.libs << 'lib'
   t.test_files = FileList['test/**/*_test.rb']

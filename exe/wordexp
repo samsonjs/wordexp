@@ -1,4 +1,11 @@
 #!/usr/bin/env ruby -w
 
 require 'wordexp'
-Wordexp::CLI.new.call(ARGV)
+
+string = ARGV.first
+if string.nil? || string.strip.empty?
+  warn 'Usage: wordexp <string>'
+  exit 1
+end
+
+Wordexp::CLI.new.call(string)
