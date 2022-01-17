@@ -33,7 +33,28 @@ fork { exec(*cmd) }
 # roof cats /home/queso /home/queso/bin 2022-01-16
 ```
 
-With that you're half way to a [fairly usable shell in Ruby](https://github.com/samsonjs/csc360-a1-shell).
+With that you're half way to a [fairly usable shell in Ruby](https://github.com/samsonjs/csc360-a1-shell). Ok maybe not half but it's a start.
+
+## Command line
+
+Just for fun there's a command line executable that you can use to play around or debug. Note that when you're calling it from another shell you have to quote everything liberally as to not have it interpret anything. It takes a single string as its argument so you'll want to use your shell's strictest quoting, e.g. in zsh:
+
+```zsh
+bundle exec wordexp $'echo "hello there" \'blah blah\' "$(date)"'
+```
+
+You can also open up irb and interact with it there:
+
+```ruby
+>> require 'wordexp'
+=> true
+>> Wordexp.expand('echo "hello there" \'blah blah\' "$(date)"')
+=> ["echo", "hello there", "blah blah", "Sun 16 Jan 2022 22:43:08 PST"]
+>> Wordexp.expand <<~EOT.strip
+  echo "hello there" 'blah blah' "$(date)"
+EOT
+=> ["echo", "hello there", "blah blah", "Sun 16 Jan 2022 22:43:08 PST"]
+```
 
 ## Support
 
