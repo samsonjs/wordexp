@@ -24,5 +24,6 @@ Gem::Specification.new do |spec|
   spec.files = Dir.glob(glob).reject { |f| File.directory?(f) }
   spec.bindir = 'exe'
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.extensions = %w[ext/wordexp_ext/extconf.rb]
   spec.require_paths = %w[ext lib]
 end
