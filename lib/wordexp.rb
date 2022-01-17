@@ -1,4 +1,4 @@
-require 'wordexp_ext'
+require 'wordexp_ext/wordexp_ext'
 
 module Wordexp
   autoload :CLI, 'wordexp/cli'

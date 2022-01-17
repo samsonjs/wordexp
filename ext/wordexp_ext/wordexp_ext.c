@@ -11,11 +11,9 @@
  *
  */
 
+#include <ruby.h>
 #include <string.h>
 #include <wordexp.h>
-
-#include "ruby.h"
-#include "ruby/encoding.h"
 
 static VALUE ext_wordexp(VALUE self, VALUE rstring) {
     Check_Type(rstring, T_STRING);
