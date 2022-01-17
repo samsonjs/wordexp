@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors = ['Sami Samhuri']
   spec.email = ['sami@samhuri.net']
 
-  spec.summary = 'A Ruby gem for performing shell word expansion using GNU wordexp'
+  spec.summary = 'A Ruby gem for performing shell word expansion using wordexp'
   spec.homepage = 'https://github.com/samsonjs/wordexp'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.6.0'
