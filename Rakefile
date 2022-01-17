@@ -38,8 +38,9 @@ Rake::Task[:build].enhance [:disable_overcommit]
 
 task :verify_gemspec_files do
   git_files = `git ls-files -z`.split("\x0")
+  ext_files = Dir['**/*.bundle']
   gemspec_files = Gem::Specification.load('wordexp.gemspec').files.sort
-  ignored_by_git = gemspec_files - git_files
+  ignored_by_git = gemspec_files - git_files - ext_files
   next if ignored_by_git.empty?
 
   raise <<~ERROR
