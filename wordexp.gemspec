@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   }
 
   # Specify which files should be added to the gem when it is released.
-  glob = %w[LICENSE.txt README.md lib/**/* ext/extconf.rb ext/wordexp_ext.c]
+  glob = %w[LICENSE.txt README.md exe/**/* lib/**/* ext/extconf.rb ext/wordexp_ext.c]
   spec.files = Dir.glob(glob).reject { |f| File.directory?(f) }
   spec.bindir = 'exe'
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
