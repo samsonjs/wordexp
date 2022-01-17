@@ -9,5 +9,5 @@
 /tmp/
 ext/**/Makefile
 ext/**/*.o
-ext/**/*.bundle
+**/wordexp*.bundle
 *.gem
