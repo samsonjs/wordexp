@@ -1,19 +1,16 @@
 require 'bundler/gem_tasks'
 require 'English'
 require 'open3'
+require 'rake/extensiontask'
 require 'rake/testtask'
 require 'rubocop/rake_task'
 
-task :compile do
-  puts 'Compiling C extension'
-  # ignore clean failure because the Makefile may not exist yet
-  cmd = 'cd ext/wordexp_ext && (make clean || true) && ruby extconf.rb && make'
-  out, status = Open3.capture2e(cmd)
-  unless status.success?
-    warn out
-    raise 'Failed to compile native extension'
-  end
-  puts 'Done'
+task :clean do
+  `cd ext/wordexp_ext && make clean && rm -f Makefile`
+end
+
+Rake::ExtensionTask.new 'wordexp_ext' do |ext|
+  ext.lib_dir = 'lib/wordexp'
 end
 
 Rake::TestTask.new(test: :compile) do |t|
