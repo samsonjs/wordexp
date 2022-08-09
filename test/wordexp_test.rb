@@ -10,19 +10,19 @@ class WordexpTest < Minitest::Test
   end
 
   def test_environment_variable_expansion
-    assert_equal [ENV['HOME']], ::Wordexp.expand('$HOME')
+    assert_equal [Dir.home], ::Wordexp.expand('$HOME')
   end
 
   def test_tilde_expansion
-    assert_equal ["#{ENV['HOME']}/bin"], ::Wordexp.expand('~/bin')
+    assert_equal [File.join(Dir.home, 'bin')], ::Wordexp.expand('~/bin')
   end
 
   def test_command_substitution_backticks
-    assert_equal ["#{ENV['HOME']}/bin"], ::Wordexp.expand('`echo ~/bin`')
+    assert_equal [File.join(Dir.home, 'bin')], ::Wordexp.expand('`echo ~/bin`')
   end
 
   def test_command_substitution_dollar_parentheses
-    assert_equal ["#{ENV['HOME']}/bin"], ::Wordexp.expand('$(echo ~/bin)')
+    assert_equal [File.join(Dir.home, 'bin')], ::Wordexp.expand('$(echo ~/bin)')
   end
 
   def test_error_badchar
