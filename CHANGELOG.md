@@ -4,6 +4,12 @@
 
 [gh]: https://github.com/samsonjs/wordexp/releases
 
+# 0.1.2
+# 2023-01-08
+
+- Add support for Ruby 3.2
+- Drop support for Ruby 2.6
+
 # 0.1.1
 # 2022-01-16
 
