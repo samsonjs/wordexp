@@ -1,4 +1,4 @@
-# Changelo
+# Changelog
 
 [Release notes][gh] for this project are [also available on GitHub][gh].
 
