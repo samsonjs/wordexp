@@ -5,7 +5,7 @@
 [gh]: https://github.com/samsonjs/wordexp/releases
 
 # 0.2.0
-# unreleased
+# 2023-10-05
 
 - Drop support for Ruby 2.7 because it's no longer supported
 
