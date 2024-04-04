@@ -4,7 +4,7 @@ executors:
     parameters:
       version:
         description: "Ruby version number"
-        default: "3.2.2"
+        default: "3.3.0"
         type: string
     docker:
       - image: cimg/ruby:<< parameters.version >>
@@ -15,7 +15,7 @@ commands:
     parameters:
       version:
         description: "Ruby version number"
-        default: "3.2.2"
+        default: "3.3.0"
         type: string
     steps:
       - restore_cache:
@@ -44,7 +44,7 @@ jobs:
     parameters:
       version:
         description: "Ruby version number"
-        default: "3.2.2"
+        default: "3.3.0"
         type: string
     executor:
       name: ruby
@@ -65,14 +65,14 @@ workflows:
       - test:
           matrix:
             parameters:
-              version: ["3.0.6", "3.1.4", "3.2.2"]
+              version: ["3.1.4", "3.2.3", "3.3.0"]
   cron-workflow:
     jobs:
       - rubocop
       - test:
           matrix:
             parameters:
-              version: ["3.0.6", "3.1.4", "3.2.2"]
+              version: ["3.1.4", "3.2.3", "3.3.0"]
     triggers:
       - schedule:
           cron: "0 13 * * 6"
