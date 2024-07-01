@@ -3,7 +3,7 @@ gemspec
 
 gem 'minitest', '~> 5.20'
 gem 'minitest-ci', '~> 3.4'
-gem 'minitest-reporters', '~> 1.6'
+gem 'minitest-reporters', '~> 1.7'
 gem 'rake', '~> 13.2'
 gem 'rake-compiler', '~> 1.2'
 gem 'rubocop', '1.64.0'
