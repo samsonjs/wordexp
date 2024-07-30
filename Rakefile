@@ -5,6 +5,7 @@ require 'rake/extensiontask'
 require 'rake/testtask'
 require 'rubocop/rake_task'
 
+desc 'Clean build files'
 task :clean do
   `cd ext/wordexp_ext && make clean && rm -f Makefile`
 end
@@ -30,12 +31,14 @@ Rake::Task['release'].enhance do
   system 'open https://github.com/samsonjs/wordexp/releases'
 end
 
+desc 'Set environment variable OVERCOMMIT_DISABLE to 1'
 task :disable_overcommit do
   ENV['OVERCOMMIT_DISABLE'] = '1'
 end
 
 Rake::Task[:build].enhance [:disable_overcommit]
 
+desc 'Ensure that files in the gemspec are tracked with git'
 task :verify_gemspec_files do
   git_files = `git ls-files -z`.split("\x0")
   ext_files = Dir['**/*.bundle']
@@ -62,12 +65,14 @@ Rake::Task[:build].enhance [:verify_gemspec_files]
 task bump: %w[bump:bundler bump:ruby bump:year]
 
 namespace :bump do
+  desc 'Update to the latest bundler version in .circleci/config.yml and Gemfile.lock'
   task :bundler do
     version = Gem.latest_version_for('bundler').to_s
     replace_in_file '.circleci/config.yml', /bundler -v (\S+)/ => version
     replace_in_file 'Gemfile.lock', /^BUNDLED WITH\n\s+(\d\S+)$/ => version
   end
 
+  desc 'Update ruby versions in wordexp.gemspec, .rubocop.yml, and .circleci/config.yml'
   task :ruby do
     lowest = RubyVersions.lowest_supported
     lowest_minor = RubyVersions.lowest_supported_minor
@@ -80,6 +85,7 @@ namespace :bump do
     replace_in_file '.circleci/config.yml', /version: (\[.+\])/ => latest_patches.inspect
   end
 
+  desc 'Update to the latest year in LICENSE.txt'
   task :year do
     replace_in_file 'LICENSE.txt', /\(c\) (\d+)/ => Date.today.year.to_s
   end
