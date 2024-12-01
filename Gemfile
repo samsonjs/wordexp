@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gemspec
 
-gem 'minitest', '~> 5.20'
+gem 'minitest', '~> 5.25'
 gem 'minitest-ci', '~> 3.4'
 gem 'minitest-reporters', '~> 1.6'
 gem 'rake', '~> 13.2'
