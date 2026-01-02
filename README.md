@@ -1,7 +1,7 @@
 # wordexp
 
 [![Gem Version](https://badge.fury.io/rb/wordexp.svg)](https://rubygems.org/gems/wordexp)
-[![Circle](https://circleci.com/gh/samsonjs/wordexp/tree/main.svg?style=shield)](https://app.circleci.com/pipelines/github/samsonjs/wordexp?branch=main)
+[![CI](https://github.com/samsonjs/wordexp/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/samsonjs/wordexp/actions/workflows/ci.yml?query=branch%3Amain)
 [![0 dependencies!](https://0dependencies.dev/0dependencies.svg)](https://0dependencies.dev)
 
 A Ruby gem for performing shell word expansion using [wordexp][]. It's like [Shellwords][] turned up to 11. Not only does it split taking quotes into account, but it also expands environment variables and tildes, and runs subcommands in `` `backticks` `` or `$(dollar parentheses)`.
