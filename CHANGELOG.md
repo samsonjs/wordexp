@@ -4,6 +4,11 @@
 
 [gh]: https://github.com/samsonjs/wordexp/releases
 
+# 0.2.1
+# 2026-01-02
+
+- Ship source-only gem artifacts to ensure the native extension is built locally
+
 # 0.2.0
 # 2023-10-05
 

@@ -11,3 +11,4 @@ ext/**/Makefile
 ext/**/*.o
 **/wordexp*.bundle
 *.gem
+Gemfile.lock
