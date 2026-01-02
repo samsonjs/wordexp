@@ -1,8 +1,8 @@
 require 'bundler/gem_tasks'
 require 'English'
+require 'minitest/test_task'
 require 'open3'
 require 'rake/extensiontask'
-require 'rake/testtask'
 require 'rubocop/rake_task'
 
 desc 'Clean build files'
@@ -14,10 +14,11 @@ Rake::ExtensionTask.new 'wordexp_ext' do |ext|
   ext.lib_dir = 'lib/wordexp'
 end
 
-Rake::TestTask.new(test: :compile) do |t|
+Minitest::TestTask.create(test: :compile) do |t|
   t.libs << 'test'
   t.libs << 'lib'
-  t.test_files = FileList['test/**/*_test.rb']
+  t.warning = false
+  t.test_globs = ['test/**/*_test.rb']
 end
 
 RuboCop::RakeTask.new
