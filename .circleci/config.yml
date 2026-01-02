@@ -55,7 +55,7 @@ jobs:
           version: << parameters.version >>
       - run: bundle exec rake test
       - store_test_results:
-          path: "$CIRCLE_TEST_REPORTS/reports"
+          path: ./reports
 
 workflows:
   version: 2

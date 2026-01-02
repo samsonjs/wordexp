@@ -2,5 +2,5 @@
 if ENV['CIRCLECI']
   require 'minitest/ci'
 
-  Minitest::Ci.report_dir = File.join(ENV.fetch('CIRCLE_TEST_REPORTS'), 'reports')
+  Minitest::Ci.report_dir = './reports'
 end
