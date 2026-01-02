@@ -53,7 +53,7 @@ jobs:
       - checkout
       - bundle_install:
           version: << parameters.version >>
-      - run: bundle exec rake test TESTOPTS="--ci-dir=./reports"
+      - run: bundle exec rake test
       - store_test_results:
           path: ./reports
 
@@ -65,14 +65,14 @@ workflows:
       - test:
           matrix:
             parameters:
-              version: ["3.1.6", "3.2.6", "3.3.6", "3.4.1"]
+              version: ["3.2.6", "3.3.6", "3.4.1"]
   cron-workflow:
     jobs:
       - rubocop
       - test:
           matrix:
             parameters:
-              version: ["3.1.6", "3.2.6", "3.3.6", "3.4.1"]
+              version: ["3.2.6", "3.3.6", "3.4.1"]
     triggers:
       - schedule:
           cron: "0 13 * * 6"
