@@ -1,3 +1,3 @@
 require 'mkmf'
 
-create_makefile 'wordexp_ext/wordexp_ext'
+create_makefile 'wordexp/wordexp_ext'

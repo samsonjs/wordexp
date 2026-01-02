@@ -4,6 +4,11 @@
 
 [gh]: https://github.com/samsonjs/wordexp/releases
 
+# 0.2.2
+# 2026-01-02
+
+- Build the native extension under `wordexp/` so `require "wordexp/wordexp_ext"` resolves correctly
+
 # 0.2.1
 # 2026-01-02
 
