@@ -15,7 +15,7 @@ jobs:
         with:
           ruby-version: 4.0.0
       - name: Cache Ruby gems
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-bundle-4.0.0-${{ hashFiles('Gemfile.lock') }}
@@ -39,7 +39,7 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
       - name: Cache Ruby gems
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-bundle-${{ matrix.ruby-version }}-${{ hashFiles('Gemfile.lock') }}
