@@ -1,0 +1,35 @@
+# Runs inside the official ruby image (it ships gcc and make, which the
+# native extension needs). Gems are cached in a per-Ruby volume under the
+# runner's cache dir since both jobs run concurrently.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        ruby: ["3.4", "4.0.1"]
+    runs-on: docker
+    container:
+      image: docker.io/library/ruby:${{ matrix.ruby }}
+      volumes:
+        - /home/forgejo-runner/cache/wordexp-gems-${{ matrix.ruby }}:/gems
+    env:
+      BUNDLE_PATH: /gems
+    steps:
+      - name: Check out
+        uses: https://git.samhuri.net/sjs/actions/checkout@v1
+        with:
+          require-file: Gemfile
+      - name: Install gems
+        run: bundle install --jobs 4 --retry 3
+      - name: Run tests and RuboCop
+        run: bundle exec rake
