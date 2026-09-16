@@ -1,6 +1,7 @@
-# Runs inside the official ruby image (it ships gcc and make, which the
-# native extension needs). Gems are cached in a per-Ruby volume under the
-# runner's cache dir since both jobs run concurrently.
+# Runs inside the official ruby image (it ships gcc and make, which the native
+# extension needs), on the moving tag for each line the gem supports so the
+# matrix follows the newest patch of both. Gems are cached in a per-Ruby
+# volume under the runner's cache dir since both jobs run concurrently.
 name: CI
 
 on:
@@ -16,7 +17,7 @@ jobs:
   test:
     strategy:
       matrix:
-        ruby: ["3.4", "4.0.1"]
+        ruby: ["3.4", "4.0"]
     runs-on: docker
     container:
       image: docker.io/library/ruby:${{ matrix.ruby }}
