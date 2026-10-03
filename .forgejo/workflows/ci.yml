@@ -34,3 +34,15 @@ jobs:
         run: bundle install --jobs 4 --retry 3
       - name: Run tests and RuboCop
         run: bundle exec rake
+
+  workflows:
+    name: Lint workflows
+    runs-on: docker
+    container:
+      image: docker.io/library/ruby:4.0
+    timeout-minutes: 5
+    steps:
+      - name: Check out
+        uses: https://git.samhuri.net/sjs/actions/checkout@v1
+      - name: actionlint
+        uses: https://git.samhuri.net/sjs/actions/actionlint@v1
